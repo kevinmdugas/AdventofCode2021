@@ -1,6 +1,13 @@
 ﻿using System;
 using System.IO;
 
+/*
+    This class contains two methods that solve parts 1 and 2 of
+    Day 1: Sonar Sweep.
+        https://adventofcode.com/2021/day/1
+    It uses the included SonarSweepData.txt but could also work
+    with a different specified file.
+*/
 
 namespace AdventofCode
 {
@@ -27,6 +34,9 @@ namespace AdventofCode
             
         }
 
+        // Menu interface that allows the user to choose between counting
+        // the number of individual depth increases in sequential data items
+        // or the number of depth increases between sequential intervals of data.
         void TopMenu(StreamReader sr, string file)
         {
             int option = 0;
@@ -70,7 +80,6 @@ namespace AdventofCode
 
                 }
 
-                //quit
                 else if (option == 3)
                 {
                     return;
@@ -89,6 +98,8 @@ namespace AdventofCode
             } while (true);
         }
 
+        //Count the number of depth increases between sequential data points
+        //Return the count or error if no data is read
         int IndDepthIncrease(StreamReader sr)
         {
             string line;
@@ -114,6 +125,9 @@ namespace AdventofCode
 
         }
 
+        //Count the number of aggregate depth increases between data intervals of 
+        // the passed in size. Return error if there isn't enough data to fill a single
+        // interval.
         int WindowDepthIncrease(StreamReader sr, int sz)
         {
             string line;
