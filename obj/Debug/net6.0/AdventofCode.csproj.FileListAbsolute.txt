@@ -1,0 +1,15 @@
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\bin\Debug\net6.0\AdventofCode.exe
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\bin\Debug\net6.0\AdventofCode.deps.json
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\bin\Debug\net6.0\AdventofCode.runtimeconfig.json
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\bin\Debug\net6.0\AdventofCode.dll
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\bin\Debug\net6.0\ref\AdventofCode.dll
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\bin\Debug\net6.0\AdventofCode.pdb
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\obj\Debug\net6.0\AdventofCode.csproj.AssemblyReference.cache
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\obj\Debug\net6.0\AdventofCode.GeneratedMSBuildEditorConfig.editorconfig
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\obj\Debug\net6.0\AdventofCode.AssemblyInfoInputs.cache
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\obj\Debug\net6.0\AdventofCode.AssemblyInfo.cs
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\obj\Debug\net6.0\AdventofCode.csproj.CoreCompileInputs.cache
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\obj\Debug\net6.0\AdventofCode.dll
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\obj\Debug\net6.0\ref\AdventofCode.dll
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\obj\Debug\net6.0\AdventofCode.pdb
+D:\Kevin\Documents\repos\AdventofCode\AdventofCode\obj\Debug\net6.0\AdventofCode.genruntimeconfig.cache
