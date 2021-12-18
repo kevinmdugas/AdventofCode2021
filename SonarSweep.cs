@@ -13,22 +13,19 @@ namespace AdventofCode
 {
     class SonarSweep
     {
-        static void Main(string[] args)
+        StreamReader sr;
+        string file;
+
+        public SonarSweep()
         {
             try
             {
-                string file = "../../../SonarSweepData.txt";
-                using (StreamReader sr = new StreamReader(file))
-                {
-                    SonarSweep sweeper = new SonarSweep();
-                    sweeper.TopMenu(sr, file);
-                    sr.Close();
-                }
-                
+                this.file = "../../../SonarSweepData.txt";
+                this.sr = new StreamReader(file);
             }
             catch (Exception e)
             {
-                Console.WriteLine("The file could not be read:");
+                Console.WriteLine("The sonar sweep file could not be read:");
                 Console.WriteLine(e.Message);
             }
             
@@ -37,14 +34,14 @@ namespace AdventofCode
         // Menu interface that allows the user to choose between counting
         // the number of individual depth increases in sequential data items
         // or the number of depth increases between sequential intervals of data.
-        void TopMenu(StreamReader sr, string file)
+        public void TopMenu()
         {
             int option = 0;
             string response;
 
             do
             {
-                Console.WriteLine("\nSonar Sweep Menu\n");
+                Console.WriteLine("\n\t~~ Sonar Sweep Menu ~~\n");
                 Console.WriteLine("1) Count individual depth increases");
                 Console.WriteLine("2) Count depth window increases");
                 Console.WriteLine("3) Quit");
@@ -58,7 +55,7 @@ namespace AdventofCode
                 //count individual depth increases
                 if (option == 1)
                 {
-                    int count = this.IndDepthIncrease(sr);
+                    int count = this.IndDepthIncrease();
 
                     if (count == -1)
                         Console.WriteLine("No data was read");
@@ -71,7 +68,7 @@ namespace AdventofCode
                 //uses default window size of 3, can implement user input to define any size
                 else if (option == 2)
                 {
-                    int count = this.WindowDepthIncrease(sr, 3);
+                    int count = this.WindowDepthIncrease(3);
 
                     if (count == -1)
                         Console.WriteLine("Not enough data to fill a window of the specified size");
@@ -82,6 +79,7 @@ namespace AdventofCode
 
                 else if (option == 3)
                 {
+                    this.sr.Close();
                     return;
                 }
 
@@ -91,25 +89,25 @@ namespace AdventofCode
                     continue;
                 }
 
-                sr.DiscardBufferedData();
-                sr.Close();
-                sr = new StreamReader(file);
+                this.sr.DiscardBufferedData();
+                this.sr.Close();
+                this.sr = new StreamReader(this.file);
 
             } while (true);
         }
 
         //Count the number of depth increases between sequential data points
         //Return the count or error if no data is read
-        int IndDepthIncrease(StreamReader sr)
+        public int IndDepthIncrease()
         {
-            string line;
-            if ((line = sr.ReadLine()) != null)
+            string line = new string(this.sr.ReadLine());
+            if (line != null)
             {
                 int count = 0;
                 int prev;
                 int cur = Int16.Parse(line);
 
-                while ((line = sr.ReadLine()) != null)
+                while ((line = this.sr.ReadLine()) != null)
                 {
                     prev = cur;
                     cur = Int16.Parse(line);
@@ -128,7 +126,7 @@ namespace AdventofCode
         //Count the number of aggregate depth increases between data intervals of 
         // the passed in size. Return error if there isn't enough data to fill a single
         // interval.
-        int WindowDepthIncrease(StreamReader sr, int sz)
+        public int WindowDepthIncrease(int sz)
         {
             string line;
             int[] data = new int[sz];
@@ -138,7 +136,7 @@ namespace AdventofCode
             for (int i = 0; i < sz; ++i)
             {
                 //could not fill first window
-                if ((line = sr.ReadLine()) == null)
+                if ((line = this.sr.ReadLine()) == null)
                     return -1;
 
                 data[i] = Int16.Parse(line);
@@ -148,7 +146,7 @@ namespace AdventofCode
             int prev;
             int count = 0;
 
-            while ((line = sr.ReadLine()) != null)
+            while ((line = this.sr.ReadLine()) != null)
             {
                 prev = cur;
                 cur -= data[0];
