@@ -14,8 +14,7 @@ namespace AdventofCode
 
         public Navigation()
         {
-            this.depth = 0;
-            this.horiz = 0;
+            this.depth = this.horiz = 0;
 
             try
             {
@@ -29,17 +28,31 @@ namespace AdventofCode
             }
         }
         
-        public int ReadCourse()
+        public void ReadCourse()
         {
             string line;
             string[] substrings;
+
             while((line = this.sr.ReadLine()) != null)
             {
                 substrings = line.Split(' ');
-                foreach (var substring in substrings)
-                    Console.WriteLine(substring);
+
+                if (substrings[0] == "forward")
+                    this.horiz += Int16.Parse(substrings[1]);
+
+                else if (substrings[0] == "up")
+                    this.depth -= Int16.Parse(substrings[1]);
+
+                else if (substrings[0] == "down")
+                    this.depth += Int16.Parse(substrings[1]);
+
+                else
+                    Console.WriteLine("\nInvalid entry.");
             }
-            return 0;
+
+            Console.WriteLine("\n~~ Final horizontal position: {0} units ~~", this.horiz);
+            Console.WriteLine("~~ Final depth: {0} units ~~", this.depth);
+            Console.WriteLine("~~ Final product: {0} units^2 ~~", this.depth * this.horiz);
         }
         
     }

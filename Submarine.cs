@@ -21,6 +21,7 @@ namespace AdventofCode
         {
             Submarine sub = new Submarine();
             sub.sonar.TopMenu();
+            sub.nav.ReadCourse();
         }
     }
 }

@@ -41,7 +41,7 @@ namespace AdventofCode
 
             do
             {
-                Console.WriteLine("\nSonar Sweep Menu\n");
+                Console.WriteLine("\n\t~~ Sonar Sweep Menu ~~\n");
                 Console.WriteLine("1) Count individual depth increases");
                 Console.WriteLine("2) Count depth window increases");
                 Console.WriteLine("3) Quit");
