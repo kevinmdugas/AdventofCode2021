@@ -10,11 +10,12 @@ namespace AdventofCode
     {
         protected int depth;
         protected int horiz;
+        protected int aim;
         protected StreamReader sr;
 
         public Navigation()
         {
-            this.depth = this.horiz = 0;
+            this.depth = this.horiz = this.aim = 0;
 
             try
             {
@@ -36,15 +37,19 @@ namespace AdventofCode
             while((line = this.sr.ReadLine()) != null)
             {
                 substrings = line.Split(' ');
+                int magnitude = Int16.Parse(substrings[1]);
 
                 if (substrings[0] == "forward")
-                    this.horiz += Int16.Parse(substrings[1]);
+                {
+                    this.horiz += magnitude;
+                    this.depth += magnitude * this.aim; 
+                }
 
                 else if (substrings[0] == "up")
-                    this.depth -= Int16.Parse(substrings[1]);
+                    this.aim -= magnitude;
 
                 else if (substrings[0] == "down")
-                    this.depth += Int16.Parse(substrings[1]);
+                    this.aim += magnitude;
 
                 else
                     Console.WriteLine("\nInvalid entry.");
