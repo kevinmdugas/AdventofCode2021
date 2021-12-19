@@ -58,6 +58,7 @@ namespace AdventofCode
             Console.WriteLine("\n~~ Final horizontal position: {0} units ~~", this.horiz);
             Console.WriteLine("~~ Final depth: {0} units ~~", this.depth);
             Console.WriteLine("~~ Final product: {0} units^2 ~~", this.depth * this.horiz);
+
         }
         
     }

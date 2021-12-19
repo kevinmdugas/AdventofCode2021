@@ -78,10 +78,7 @@ namespace AdventofCode
                 }
 
                 else if (option == 3)
-                {
-                    this.sr.Close();
                     return;
-                }
 
                 else
                 {
