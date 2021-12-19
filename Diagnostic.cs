@@ -28,7 +28,10 @@ namespace AdventofCode
             }
         }
 
-        public void BinaryDiagnostic()
+        // Iterate through diagnostic input and count the number of 1s in each
+        // position. Use this to determine the binary representation of gamma and 
+        // epsilon. Power consumption is the product of the two.
+        public void PowerConsumption()
         {
             string line;
 
@@ -64,9 +67,12 @@ namespace AdventofCode
                     count[i] += chars[i] - 48;
             }
 
-            n = n / 2;
+            n = n / 2;          
             int k = sz - 1;
 
+            // If the number of ones are greater than half the total data items,
+            //  add that position's binary value to gamma. Otherwise, add that
+            //  position's binary value to epsilon.
             for (int i = 0; i < sz; i++)
             {
                 if (count[i] > n)
@@ -76,8 +82,9 @@ namespace AdventofCode
                 k--;
             }
 
-            Console.WriteLine("Power consumption: {0} units", this.gamma * this.epsilon);
+            Console.WriteLine("\n~~ Power consumption: {0} units ~~", this.gamma * this.epsilon);
         }
+
 
     }
 }

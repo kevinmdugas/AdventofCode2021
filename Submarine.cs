@@ -22,9 +22,28 @@ namespace AdventofCode
         static void Main(string[] args)
         {
             Submarine sub = new Submarine();
-            //sub.sonar.TopMenu();
-            //sub.nav.ReadCourse();
-            sub.diag.BinaryDiagnostic();
+            string response;
+
+            do
+            {
+                Console.WriteLine("\n\t| Submarine Main Menu |");
+                Console.WriteLine("\t-----------------------");
+                Console.WriteLine("\n1) Sonar Sweeper");
+                Console.WriteLine("2) Navigation");
+                Console.WriteLine("3) Run Diagnostics");
+
+                Console.Write("\nSelect an option or (q) to exit: ");
+                response = Console.ReadLine();
+                response.ToLower();
+
+                if (String.Compare(response, "1") == 0)
+                    sub.sonar.TopMenu();
+                else if (String.Compare(response, "2") == 0)
+                    sub.nav.ReadCourse();
+                else if (String.Compare(response, "3") == 0)
+                    sub.diag.PowerConsumption();
+
+            } while (String.Compare(response, "q") != 0);
 
         }
     }
