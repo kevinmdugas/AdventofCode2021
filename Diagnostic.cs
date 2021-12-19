@@ -8,8 +8,8 @@ namespace AdventofCode
 {
     internal class Diagnostic
     {
-        protected int gamma;
-        protected int epsilon;
+        protected uint gamma;
+        protected uint epsilon;
         protected StreamReader sr;
 
         public Diagnostic()
@@ -32,49 +32,51 @@ namespace AdventofCode
         {
             string line;
 
-            if((line = this.sr.ReadLine()) != null)
-            {
-                int sz = line.Length;
-                char[] chars = line.ToCharArray();
-                int[] count = new int[sz];
-                int n = 1;
-
-                // Initialize array
-                for (int i = 0; i < sz; i++)
-                    count[i] = chars[i] - 48; 
-                
-                while ((line = this.sr.ReadLine()) != null)
-                {
-                    if (line.Length != sz)
-                    {
-                        Console.WriteLine("Invalid entry");
-                        continue;
-                    }
-
-                    chars = line.ToCharArray();
-                    n++;
-
-                    for (int i = 0; i < sz; i++)
-                        count[i] += chars[i] - 48;
-                }
-
-                n = n / 2;
-                int k = sz;
-
-                for (int i = 0; i < sz; i++)
-                {
-                    if (count[i] > n)
-                        this.gamma += (int) Math.Pow(2, k);
-                    k--;
-                }
-
-                this.epsilon = ~this.gamma;
-                Console.WriteLine("gamma = {0}, epsilon = {1}", this.gamma, this.epsilon);
-            }
-            else
+            if ((line = this.sr.ReadLine()) == null)
             {
                 Console.WriteLine("No data to read");
+                return;
             }
+
+            int sz = line.Length;                   // Valid data size is dependent on first data
+            char[] chars = line.ToCharArray();      // Convert each string to a char array
+            int[] count = new int[sz];              // Count the number of ones in each position
+            int n = 1;                              // Count the number of data entries
+
+            // Initialize array
+            for (int i = 0; i < sz; i++)
+                count[i] = chars[i] - 48; 
+            
+            // Increment each instance of 1 in each position
+            while ((line = this.sr.ReadLine()) != null)
+            {
+                // Check for data with different lengths
+                if (line.Length != sz)
+                {
+                    Console.WriteLine("Invalid entry");
+                    continue;
+                }
+
+                chars = line.ToCharArray();
+                n++;
+
+                for (int i = 0; i < sz; i++)
+                    count[i] += chars[i] - 48;
+            }
+
+            n = n / 2;
+            int k = sz - 1;
+
+            for (int i = 0; i < sz; i++)
+            {
+                if (count[i] > n)
+                    this.gamma += (uint) Math.Pow(2, k);
+                else
+                    this.epsilon += (uint) Math.Pow(2, k);
+                k--;
+            }
+
+            Console.WriteLine("Power consumption: {0} units", this.gamma * this.epsilon);
         }
 
     }
