@@ -33,8 +33,8 @@ namespace AdventofCode
                 Console.WriteLine("3) Run Diagnostics");
 
                 Console.Write("\nSelect an option or (q) to exit: ");
-                response = Console.ReadLine();
-                response.ToLower();
+                response = Console.ReadLine().ToLower();
+                //response = response.ToLower();
 
                 if (String.Compare(response, "1") == 0)
                     sub.sonar.TopMenu();
